@@ -1,0 +1,92 @@
+/*
+  Estilos usados en las vistas del usuario
+*/
+body {
+	background-color: darkgray;
+}
+#contenido {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#Right{
+    background-color: black;
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    margin-left: 60%;
+    clear:none;
+    margin-top: 20px;
+    font-size: 20px
+}
+
+#Left{
+    background-color: black;
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    /*float:left;*/
+    clear:none;
+    margin-top: 20px;
+    margin-left: 10%;
+    font-size: 20px
+
+}
+
+#BotoneArriba {
+	background-image:url('../img/FlechaArriba.png');
+	background-repeat:no-repeat;
+  	height:79px;
+  	width:65px;
+  	background-position:center;
+  	background-size: cover;
+}
+
+#BotoneAbajo {
+	background-image:url('../img/FlechaAbajo.png');
+	background-repeat:no-repeat;
+  	height:79px;
+  	width:65px;
+  	background-position:center;
+  	background-size: cover;
+}
+
+#BotoneIzquierda {
+	background-image:url('../img/FlechaIzquierda.png');
+	background-repeat:no-repeat;
+  	height:65px;
+  	width:79px;
+  	background-position:center;
+  	background-size: cover;
+}
+
+#BotoneDerecha {
+	background-image:url('../img/FlechaDerecha.png');
+	background-repeat:no-repeat;
+  	height:65px;
+  	width:79px;
+  	background-position:center;
+  	background-size: cover;
+}
+
+#tdCentro{
+    width: 1px;
+}
+
+.btn {
+    width:50%;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#Tiempo {
+  width:2%;
+  text-align: center;
+}
