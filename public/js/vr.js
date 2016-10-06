@@ -82,20 +82,52 @@ function fullscreen(){
           */
           if(alpha === "Izquierda" && gamma === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Izquierda</b>";
-          	websocket.emit('Izquierda');
+          	direccion(1);
           }else if(alpha === "Derecha" && gamma === "Sin acciones"){
 			divLeft.innerHTML = divRight.innerHTML  = "<b>Derecha</b>";
-			websocket.emit('Derecha');
+			direccion(2);
           }else if(gamma === "Adelante" && alpha === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML  = "<b>Adelante</b>";
-          	websocket.emit('Adelante');
+          	direccion(3);
           }else if(gamma === "Sin acciones" && alpha === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Detener</b>";
-          	websocket.emit('Detener');
+          	direccion(4);
           }else if(gamma === "Atras" && alpha === "Izquierda"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Atrás</b>";
-          	websocket.emit('Atras');
+          	direccion(5);
           }
+
+
+var direction = 0;
+
+var direccion = function(dir){
+	if(direction === 0){
+		direction = dir;
+	}else if(direction !== dir){
+		switch(dir){
+			case 1:
+				websocket.emit('Izquierda');
+				direction = dir;
+			break;
+			case 2:
+				websocket.emit('Derecha');
+				direction = dir;
+			break;
+			case 3:
+				websocket.emit('Adelante');
+				direction = dir;
+			break;
+			case 4:
+				websocket.emit('Detener');
+				direction = dir;
+			break;
+			case 5:
+				websocket.emit('Atras');
+				direction = dir;
+			break;
+		}
+	}
+}
 
 
  }, true);
