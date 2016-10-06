@@ -82,19 +82,19 @@ function fullscreen(){
           */
           if(alpha === "Izquierda" && gamma === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Izquierda</b>";
-          	mySocket.emit('Izquierda');
+          	websocket.emit('Izquierda');
           }else if(alpha === "Derecha" && gamma === "Sin acciones"){
 			divLeft.innerHTML = divRight.innerHTML  = "<b>Derecha</b>";
-			mySocket.emit('Derecha');
+			websocket.emit('Derecha');
           }else if(gamma === "Adelante" && alpha === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML  = "<b>Adelante</b>";
-          	mySocket.emit('Adelante');
+          	websocket.emit('Adelante');
           }else if(gamma === "Sin acciones" && alpha === "Sin acciones"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Detener</b>";
-          	mySocket.emit('Detener');
+          	websocket.emit('Detener');
           }else if(gamma === "Atras" && alpha === "Izquierda"){
           	divLeft.innerHTML = divRight.innerHTML = "<b>Atrás</b>";
-          	mySocket.emit('Atras');
+          	websocket.emit('Atras');
           }
 
 
