@@ -98,6 +98,9 @@ function fullscreen(){
           }
 
 
+ }, true);
+
+
 var direction = 0;
 
 var direccion = function(dir){
@@ -128,6 +131,3 @@ var direccion = function(dir){
 		}
 	}
 }
-
-
- }, true);

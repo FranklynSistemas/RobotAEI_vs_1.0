@@ -14,6 +14,8 @@ app.set("view engine", "html");
 app.set("views", __dirname + "/vistas");
 app.use(express.static('public'));
 
+var volta; // Variable para normalizar el voltaje recibido
+
 
 // ============ Rutas de la interfaz de Usuario ====================
 app.get('/', function(req, res, next) {
@@ -33,6 +35,11 @@ app.get('/vr', function(req, res, next) {
   res.render('ControlVr'); // Crea dos imagenes paralelas del mismo tamaño, ideal para las Carboard
 });
 
+app.get('/grafica', function(req, res, next) {
+  res.render('grafica'); // Crea dos imagenes paralelas del mismo tamaño, ide$
+});
+
+
 //Ruta sí, no se encuentra lo que el usuario busca
 app.get("*", function(req, res){
   res.status(404).send("Página no encontrada :( en el momento");
@@ -48,12 +55,37 @@ var board = new five.Board({
 
 // Inicializacion del sistema con los pines a utilizar
 board.on("ready", function() {
-  motorA1 = new five.Led(9);
-  motorA2 = new five.Led(8);
-  motorB1 = new five.Led(5);
-  motorB2 = new five.Led(4);
-  on = new five.Led(13); //Led de encendido titila al estar listo para recibir señal
-  on.blink();
+   motorA1 = new five.Led(9);
+   motorA2 = new five.Led(8);
+   motorB1 = new five.Led(5);
+   motorB2 = new five.Led(4);
+   on = new five.Led(13); //Led de encendido titila al estar listo para recibir señal
+   on.blink();
+  /*
+    *******************************Detector de Metal***************************************
+    Se usa entrada analoga A1 la cual medira el voltaje que varia cada vez que algun objeto
+    metalico se hacerca a la boina del circuito
+  */ 
+	
+  this.pinMode(1, five.Pin.ANALOG);
+  this.analogRead(1, function(voltage) {
+    //volta = voltage;
+    volta=(voltage*5)/1023;
+    volta=Math.round(volta*10000)/10000;
+  });
+
+/*
+var lightSensor = new five.Sensor({
+ pin: "A0",
+ freq:250
+});
+
+lightSensor.on("data", function(){
+ volta = this.value;
+ console.log(volta);
+});
+*/
+
 });
 
 //==================== Sistema de Control en tiempo real Socket.io ==============================
@@ -106,6 +138,12 @@ io.on('connection', function (socket) {
           socket.broadcast.emit('setFrame',obj)
       });
 	
+// Función Socket.io para enviar el senso de metales cada 500 milisegundos
+      setInterval(function(){
+        socket.emit('voltaje',volta);
+        },500);
+
+
     });
 
 

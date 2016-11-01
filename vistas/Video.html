@@ -1,16 +1,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 	<head>
 <script src="/socket.io/socket.io.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+<!--animate-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/animate/jquery.gsap.js"></script>
+<script src="js/animate/TweenLite.js"></script>
+<script src="js/animate/TweenMax.js"></script>
+<script src="js/animate/TimeLineMax.js"></script>
+<script src="js/animate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <style>
     video{display: none;}
   </style>
 
 </head>
 <body>
-	
 <video autoplay></video>
-  <canvas id='miCanvas' width='400' height='500'></canvas>
-<div id='info'></div>
+<div>
+	<a href="/"><button class="back3"></button></a>
+<div id='info'>
+
+</div>
+	<div><canvas id='miCanvas' width='400' height='500'></canvas></div>
+
+</div>
+  <div id="jhonny"></div>
 </body>
 <script>
 var websocket = io.connect("");
@@ -19,8 +35,8 @@ window.URL = window.URL || window.webkitURL;
 navigator.getUserMedia = ( navigator.getUserMedia ||
                        navigator.webkitGetUserMedia ||
                        navigator.mozGetUserMedia ||
-                     navigator.msGetUserMedia); 
-   */                  
+                     navigator.msGetUserMedia);
+   */
 navigator.getMedia = ( navigator.getUserMedia ||
                            navigator.webkitGetUserMedia ||
                            navigator.mozGetUserMedia ||
@@ -50,7 +66,7 @@ navigator.getMedia (
       document.querySelector('video').src = window.URL.createObjectURL(localMediaStream);
       document.getElementById("info").innerHTML ="Reproduciendo...";
    },
-   
+
    // errorCallback
    function(err) {
     console.log("Ocurrió el siguiente error: " + err);
@@ -64,7 +80,7 @@ navigator.getUserMedia({audio: false, video:true},function(vid){
       document.querySelector('video').src = window.URL.createObjectURL(vid);
     });
 */
-  
+
    window.requestAnimFrame = (function(callback){
       return window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
@@ -99,5 +115,5 @@ navigator.getUserMedia({audio: false, video:true},function(vid){
     return document.getElementById(div);
   }
 </script>
-</html>
 
+</html>
